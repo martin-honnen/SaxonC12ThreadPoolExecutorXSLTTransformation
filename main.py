@@ -15,6 +15,7 @@ def transform(saxon_processor, xslt30_executable, file_name):
         return e.message
 def thread_pool_test():
     with PySaxonProcessor() as saxon_processor:
+        print(saxon_processor.version)
         xslt30_compiler = saxon_processor.new_xslt30_processor()
 
         try:
