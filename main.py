@@ -13,6 +13,8 @@ def transform(saxon_processor, xslt30_executable, file_name):
         return True
     except PySaxonApiError as e:
         return e.message
+    finally:
+        saxon_processor.detach_current_thread
 def thread_pool_test():
     with PySaxonProcessor() as saxon_processor:
         xslt30_compiler = saxon_processor.new_xslt30_processor()
