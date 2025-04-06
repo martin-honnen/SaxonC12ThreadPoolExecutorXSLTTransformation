@@ -7,6 +7,7 @@ from saxonche import PySaxonApiError
 
 def transform(saxon_processor, xslt30_executable, file_name):
     try:
+        saxon_processor.attach_current_thread
         xdm_node = saxon_processor.parse_xml(xml_file_name=f'input/{file_name}')
         xslt30_executable.set_global_context_item(xdm_item=xdm_node)
         xslt30_executable.apply_templates_returning_file(xdm_value=xdm_node, output_file=f'output/{file_name}')
